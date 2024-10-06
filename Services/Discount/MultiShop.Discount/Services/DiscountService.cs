@@ -13,7 +13,7 @@ namespace MultiShop.Discount.Services
             _context = context;
         }
 
-        public async Task CreateCouponAsync(CreateCouponDto createCouponDto)
+        public async Task CreateDiscountCouponAsync(CreateCouponDto createCouponDto)
         {
             string query = "insert into Coupones (Code, Rate, IsActive, ValidDate) values (@code, @cate, @isActive, @validDate)";
 
@@ -29,7 +29,7 @@ namespace MultiShop.Discount.Services
             }
         }
 
-        public async Task DeleteCouponAsync(int id)
+        public async Task DeleteDiscountCouponAsync(int id)
         {
             string query = "Delete From Coupones where CouponId=@couponId";
             var parameters = new DynamicParameters();
@@ -41,7 +41,7 @@ namespace MultiShop.Discount.Services
             }
         }
 
-        public async Task<List<ResultCouponDto>> GetAllCouponAsync()
+        public async Task<List<ResultCouponDto>> GetAllDiscountCouponAsync()
         {
             string query = "Select * From Coupones";
 
@@ -52,7 +52,7 @@ namespace MultiShop.Discount.Services
             }
         }
 
-        public async Task<GetByIdCouponDto> GetByIdCouponAsync(int id)
+        public async Task<GetByIdCouponDto> GetByIdDiscountCouponAsync(int id)
         {
             string query = "Select * From Coupones Where CouponId=@couponId";
             var parameters = new DynamicParameters();
@@ -66,7 +66,7 @@ namespace MultiShop.Discount.Services
             }
         }
 
-        public async Task UpdateCouponAsync(UpdateCouponDto updateCouponDto)
+        public async Task UpdateDiscountCouponAsync(UpdateCouponDto updateCouponDto)
         {
             string query = "Update Coupones Set Code=@code, Rate=@rate, IsActive=@isActive, ValidDate=@validDate where CouponId=@couponId";
 

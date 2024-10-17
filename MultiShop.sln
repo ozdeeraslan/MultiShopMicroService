@@ -27,7 +27,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiShop.Order.Domain", "S
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiShop.Order.WebApi", "Services\Order\Presentation\MultiShop.Order.WebApi\MultiShop.Order.WebApi.csproj", "{D6422867-35CB-40A8-8BAF-9D9322009F74}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiShop.Order.Persistence", "Services\Order\Infrastructure\MultiShop.Order.Persistence\MultiShop.Order.Persistence.csproj", "{59E5D6CB-BFB3-473D-8B24-BCF0D12F0A68}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiShop.Order.Persistence", "Services\Order\Infrastructure\MultiShop.Order.Persistence\MultiShop.Order.Persistence.csproj", "{59E5D6CB-BFB3-473D-8B24-BCF0D12F0A68}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IdentityServer", "IdentityServer", "{3AEC0D11-4832-4BA2-9E74-F1F967C3D323}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiShop.IdentityServer", "IdentityServer\MultiShop.IdentityServer\MultiShop.IdentityServer.csproj", "{9A23C5E7-CC24-4B5D-99F9-7836C1545CF2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,6 +63,10 @@ Global
 		{59E5D6CB-BFB3-473D-8B24-BCF0D12F0A68}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{59E5D6CB-BFB3-473D-8B24-BCF0D12F0A68}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{59E5D6CB-BFB3-473D-8B24-BCF0D12F0A68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A23C5E7-CC24-4B5D-99F9-7836C1545CF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A23C5E7-CC24-4B5D-99F9-7836C1545CF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A23C5E7-CC24-4B5D-99F9-7836C1545CF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A23C5E7-CC24-4B5D-99F9-7836C1545CF2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -76,6 +84,7 @@ Global
 		{8000DBF0-4CAE-41F1-A635-072197ED7BC2} = {E6278C00-DCD3-4687-90A4-7FB7E2279E3F}
 		{D6422867-35CB-40A8-8BAF-9D9322009F74} = {8DE0BE62-E474-4D49-9196-1A3DA4FD92A5}
 		{59E5D6CB-BFB3-473D-8B24-BCF0D12F0A68} = {FAAABF34-7759-42BC-97E7-D2A07B2B06D7}
+		{9A23C5E7-CC24-4B5D-99F9-7836C1545CF2} = {3AEC0D11-4832-4BA2-9E74-F1F967C3D323}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FF8BBF48-8352-4A69-9FDB-4B8A230D3BF4}

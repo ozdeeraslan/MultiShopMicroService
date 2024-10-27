@@ -14,7 +14,6 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
     opt.Authority = builder.Configuration["IdentityServerUrl"];
     opt.Audience = "ResourceCatalog";
     opt.RequireHttpsMetadata = false;
-
 });
 
 builder.Services.AddScoped<ICategoryService, CategoryService>();

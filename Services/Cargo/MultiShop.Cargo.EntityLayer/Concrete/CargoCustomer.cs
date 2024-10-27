@@ -8,7 +8,7 @@ namespace MultiShop.Cargo.EntityLayer.Concrete
 {
     public class CargoCustomer
     {
-        public int CargoCustormerId { get; set; }
+        public int CargoCustomerId { get; set; }
 
         public string Name { get; set; }
 

@@ -20,15 +20,13 @@ namespace MultiShop.Cargo.WebApi.Controllers
         [HttpGet]
         public IActionResult CargoCustomerList()
         {
-            var values = _cargoCustomerService.TGetAll();
-            return Ok(values);
+            return Ok(_cargoCustomerService.TGetAll());
         }
 
         [HttpGet("{id}")]
         public IActionResult GetCargoCustomerById(int id)
         {
-            var values = _cargoCustomerService.TGetById(id);
-            return Ok(values);
+            return Ok(_cargoCustomerService.TGetById(id));
         }
 
         [HttpPost]
@@ -36,24 +34,16 @@ namespace MultiShop.Cargo.WebApi.Controllers
         {
             CargoCustomer cargoCustomer = new CargoCustomer()
             {
-                Address = createCargoCustomerDto.Address,
-                City = createCargoCustomerDto.City,
-                Email = createCargoCustomerDto.Email,
                 Name = createCargoCustomerDto.Name,
                 Surname = createCargoCustomerDto.Surname,
+                Email = createCargoCustomerDto.Email,
                 Phone = createCargoCustomerDto.Phone,
+                Address = createCargoCustomerDto.Address,
+                City = createCargoCustomerDto.City,
                 District = createCargoCustomerDto.District
             };
-
             _cargoCustomerService.TInsert(cargoCustomer);
             return Ok("Cargo Customer Added");
-        }
-
-        [HttpDelete]
-        public IActionResult RemoveCargoCustomer(int id)
-        {
-            _cargoCustomerService.TDelete(id);
-            return Ok("Cargo Customer Deleted");
         }
 
         [HttpPut]
@@ -62,17 +52,23 @@ namespace MultiShop.Cargo.WebApi.Controllers
             CargoCustomer cargoCustomer = new CargoCustomer()
             {
                 CargoCustomerId = updateCargoCustomerDto.CargoCustomerId,
-                Address = updateCargoCustomerDto.Address,
-                City = updateCargoCustomerDto.City,
-                Email = updateCargoCustomerDto.Email,
                 Name = updateCargoCustomerDto.Name,
                 Surname = updateCargoCustomerDto.Surname,
+                Email = updateCargoCustomerDto.Email,
                 Phone = updateCargoCustomerDto.Phone,
-                District = updateCargoCustomerDto.District
+                Address = updateCargoCustomerDto.Address,
+                City = updateCargoCustomerDto.City,
+                District = updateCargoCustomerDto.District,
             };
-
             _cargoCustomerService.TUpdate(cargoCustomer);
             return Ok("Cargo Customer Updated");
+        }
+
+        [HttpDelete]
+        public IActionResult RemoveCargoCustomer(int id)
+        {
+            _cargoCustomerService.TDelete(id);
+            return Ok("Cargo Customer Deleted");
         }
     }
 }

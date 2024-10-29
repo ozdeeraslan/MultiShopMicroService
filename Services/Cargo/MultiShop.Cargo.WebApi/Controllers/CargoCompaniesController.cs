@@ -11,7 +11,6 @@ namespace MultiShop.Cargo.WebApi.Controllers
     public class CargoCompaniesController : ControllerBase
     {
         private readonly ICargoCompanyService _cargoCompanyService;
-
         public CargoCompaniesController(ICargoCompanyService cargoCompanyService)
         {
             _cargoCompanyService = cargoCompanyService;
@@ -20,8 +19,13 @@ namespace MultiShop.Cargo.WebApi.Controllers
         [HttpGet]
         public IActionResult CargoCompanyList()
         {
-            var values = _cargoCompanyService.TGetAll();
-            return Ok(values);
+            return Ok(_cargoCompanyService.TGetAll());
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult GetCargoCompanyById(int id)
+        {
+            return Ok(_cargoCompanyService.TGetById(id));
         }
 
         [HttpPost]
@@ -29,11 +33,22 @@ namespace MultiShop.Cargo.WebApi.Controllers
         {
             CargoCompany cargoCompany = new CargoCompany()
             {
-                CargoCompanyName = createCargoCompanyDto.CargoCompanyName
+                CargoCompanyName=createCargoCompanyDto.CargoCompanyName
             };
-
             _cargoCompanyService.TInsert(cargoCompany);
             return Ok("Cargo Company Added");
+        }
+
+        [HttpPut]
+        public IActionResult UpdateCargoCompany(UpdateCargoCompanyDto updateCargoCompanyDto)
+        {
+            CargoCompany cargoCompany = new CargoCompany()
+            {
+                CargoCompanyId=updateCargoCompanyDto.CargoCompanyId,
+                CargoCompanyName=updateCargoCompanyDto.CargoCompanyName
+            };
+            _cargoCompanyService.TUpdate(cargoCompany);
+            return Ok("Cargo Company Updated");
         }
 
         [HttpDelete]
@@ -43,24 +58,6 @@ namespace MultiShop.Cargo.WebApi.Controllers
             return Ok("Cargo Company Deleted");
         }
 
-        [HttpGet]
-        public IActionResult GetCargoCompanyById(int id)
-        {
-            var values = _cargoCompanyService.TGetById(id);
-            return Ok(values);
-        }
 
-        [HttpPut]
-        public IActionResult UpdateCargoCompany(UpdateCargoCompanyDto updateCargoCompanyDto)
-        {
-            CargoCompany cargoCompany = new CargoCompany()
-            {
-                CargoCompanyId = updateCargoCompanyDto.CargoCompanyId,
-                CargoCompanyName = updateCargoCompanyDto.CargoCompanyName
-            };
-
-            _cargoCompanyService.TUpdate(cargoCompany);
-            return Ok("Cargo Company Updated");
-        }
     }
 }

@@ -10,60 +10,56 @@ namespace MultiShop.Cargo.WebApi.Controllers
     [ApiController]
     public class CargoOperationsController : ControllerBase
     {
-        private readonly ICargoOperationService _cargoOperationService;
+        private readonly ICargoOperationService _cargoDetailService;
 
-        public CargoOperationsController(ICargoOperationService cargoOperationService)
+        public CargoOperationsController(ICargoOperationService cargoDetailService)
         {
-            _cargoOperationService = cargoOperationService;
+            _cargoDetailService = cargoDetailService;
         }
 
         [HttpGet]
-        public IActionResult CargoOperationList()
+        public IActionResult CargoOperationsList()
         {
-            var values = _cargoOperationService.TGetAll();
-            return Ok(values);
+            return Ok(_cargoDetailService.TGetAll());
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult GetCargoOperationById(int id)
+        {
+            return Ok(_cargoDetailService.TGetById(id));
         }
 
         [HttpPost]
         public IActionResult CreateCargoOperation(CreateCargoOperationDto createCargoOperationDto)
         {
-            CargoOperation CargoOperation = new CargoOperation()
+            CargoOperation cargoOperation = new CargoOperation()
             {
                 Barcode = createCargoOperationDto.Barcode,
                 Description = createCargoOperationDto.Description,
                 OperationDate = createCargoOperationDto.OperationDate
             };
-
-            _cargoOperationService.TInsert(CargoOperation);
+            _cargoDetailService.TInsert(cargoOperation);
             return Ok("Cargo Operation Added");
         }
 
         [HttpDelete]
         public IActionResult RemoveCargoOperation(int id)
         {
-            _cargoOperationService.TDelete(id);
+            _cargoDetailService.TDelete(id);
             return Ok("Cargo Operation Deleted");
-        }
-
-        [HttpGet]
-        public IActionResult GetCargoOperationById(int id)
-        {
-            var values = _cargoOperationService.TGetById(id);
-            return Ok(values);
         }
 
         [HttpPut]
         public IActionResult UpdateCargoOperation(UpdateCargoOperationDto updateCargoOperationDto)
         {
-            CargoOperation CargoOperation = new CargoOperation()
+            CargoOperation cargoOperation = new CargoOperation()
             {
                 CargoOperationId = updateCargoOperationDto.CargoOperationId,
                 Barcode = updateCargoOperationDto.Barcode,
                 Description = updateCargoOperationDto.Description,
                 OperationDate = updateCargoOperationDto.OperationDate
             };
-
-            _cargoOperationService.TUpdate(CargoOperation);
+            _cargoDetailService.TUpdate(cargoOperation);
             return Ok("Cargo Operation Updated");
         }
     }
